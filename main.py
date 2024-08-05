@@ -1,4 +1,4 @@
-from avl_tree import *
+from avl_tree import insert
 
 def find_min(node):
     current = node
@@ -13,12 +13,13 @@ def find_max(node):
     return current.key
 
 def find_sum(node):
-    current = node
-    pass
+    if node is None:
+        return 0
+    return node.key + find_sum(node.left) + find_sum(node.right)
 
 # Задаю дерево
 root = 0
-keys = [10, 20, 31, 25, 28, 27, -2, 110]
+keys = [10, 20, 31, 25, 28, 27, -2, 111]
 
 for key in keys:
     root = insert(root, key)
@@ -26,3 +27,4 @@ for key in keys:
 
 print("Найменший елемент:", find_min(root))
 print("Найбільший елемент:", find_max(root))
+print("Сума:", find_sum(root))
